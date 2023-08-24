@@ -1,8 +1,8 @@
 package site._60jong.jdbc.respository;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
-import site._60jong.jdbc.connection.DBConnectionUtil;
 import site._60jong.jdbc.domain.member.Member;
 
 import javax.sql.DataSource;
@@ -10,14 +10,16 @@ import java.sql.*;
 import java.util.NoSuchElementException;
 
 /**
- * JDBC - DataSource 사용
+ * 트랜잭션 - 트랜잭션 매니저 사용
+ * DataSourceUtils.getConnection();
+ * DataSourceUtils.releaseConnection();
  */
 @Slf4j
-public class MemberRepositoryV1 {
+public class MemberRepositoryV3 {
 
     private final DataSource dataSource;
 
-    public MemberRepositoryV1(DataSource dataSource) {
+    public MemberRepositoryV3(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
@@ -133,12 +135,14 @@ public class MemberRepositoryV1 {
     }
 
     private Connection getConnection() throws SQLException {
-        return dataSource.getConnection();
+        return DataSourceUtils.getConnection(dataSource);
     }
 
     private void close(Connection conn, Statement stmt, ResultSet rs) {
         JdbcUtils.closeResultSet(rs);
         JdbcUtils.closeStatement(stmt);
-        JdbcUtils.closeConnection(conn);
+
+        // 트랜잭션 동기화 사용을 위해서는 DataSourceUtils 사용이 필요하다 (TransactionSynchronizationManager 사용하기에)
+        DataSourceUtils.releaseConnection(conn, dataSource);
     }
 }
