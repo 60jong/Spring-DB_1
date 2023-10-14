@@ -1,4 +1,4 @@
-package site._60jong.jdbc.domain.member;
+package site._60jong.jdbc.lecture.domain.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

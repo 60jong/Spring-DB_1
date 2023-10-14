@@ -1,4 +1,4 @@
-package site._60jong.jdbc.connection;
+package site._60jong.jdbc.lecture.connection;
 
 public class ConnectionConst {
 

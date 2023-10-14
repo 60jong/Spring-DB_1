@@ -1,8 +1,8 @@
-package site._60jong.jdbc.service;
+package site._60jong.jdbc.lecture.service;
 
 import lombok.RequiredArgsConstructor;
-import site._60jong.jdbc.domain.member.Member;
-import site._60jong.jdbc.respository.MemberRepositoryV1;
+import site._60jong.jdbc.lecture.domain.member.Member;
+import site._60jong.jdbc.lecture.respository.MemberRepositoryV1;
 
 import java.sql.SQLException;
 
@@ -15,14 +15,14 @@ public class MemberServiceV1 {
         Member fromMember = memberRepository.findById(fromId);
         Member toMember = memberRepository.findById(toId);
 
-        memberRepository.update(fromId, fromMember.getMoney() - money);
+        memberRepository.updateMoney(fromId, fromMember.getMoney() - money);
         validate(toId);
-        memberRepository.update(toId, toMember.getMoney() + money);
+        memberRepository.updateMoney(toId, toMember.getMoney() + money);
     }
 
     private void validate(String id) {
         if (id.equals("ex")) {
-            throw new IllegalStateException("이체 중 예외 발생!");
+            throw new IllegalArgumentException("이체 중 예외 발생!");
         }
     }
 }

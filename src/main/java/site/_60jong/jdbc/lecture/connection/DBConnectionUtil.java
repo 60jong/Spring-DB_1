@@ -1,4 +1,4 @@
-package site._60jong.jdbc.connection;
+package site._60jong.jdbc.lecture.connection;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static site._60jong.jdbc.connection.ConnectionConst.*;
+import static site._60jong.jdbc.lecture.connection.ConnectionConst.*;
 
 @Slf4j
 public class DBConnectionUtil {

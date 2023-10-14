@@ -2,7 +2,7 @@ package site._60jong.jdbc.practice.repository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.support.JdbcUtils;
-import site._60jong.jdbc.domain.member.Member;
+import site._60jong.jdbc.lecture.domain.member.Member;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
