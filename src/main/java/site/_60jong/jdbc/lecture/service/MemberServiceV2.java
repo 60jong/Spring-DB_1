@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.support.JdbcUtils;
 import site._60jong.jdbc.lecture.domain.member.Member;
-import site._60jong.jdbc.lecture.respository.MemberRepositoryV1;
 import site._60jong.jdbc.lecture.respository.MemberRepositoryV2;
 
 import javax.sql.DataSource;
